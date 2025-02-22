@@ -9,7 +9,7 @@ const sequelize = new Sequelize({
         schema: 'booking',
         timestamps: false,
     },
-    logging: true,
+    logging: false,
     dialect: 'postgres',
     dialectModule: pg,
     host: config.dbHost,
