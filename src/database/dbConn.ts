@@ -1,4 +1,5 @@
 import { Sequelize } from "sequelize-typescript";
+import pg from 'pg';
 import config from "../../config";
 import path from "path";
 
@@ -10,14 +11,11 @@ const sequelize = new Sequelize({
     },
     logging: true,
     dialect: 'postgres',
+    dialectModule: pg,
     host: config.dbHost,
     models: [path.join(path.dirname(__filename), '../models')],
     password: config.dbPassword,
     username: config.dbUser,
 });
-
-sequelize.authenticate()
-    .then(() => console.log('Database connected...'))
-    .catch(err => console.error('Error connecting to the database:', err));
 
 export { sequelize };

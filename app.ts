@@ -7,7 +7,6 @@ import { UserController } from "./src/controllers/UserController";
 import { RoomController } from "./src/controllers/RoomController";
 import { ReservationController } from "./src/controllers/ReservationController";
 
-console.log(config);
 const app = express();
 const port = config.apiPort;
 const apiPath = config.apiPath;
@@ -30,8 +29,6 @@ app.use(apiPath, MovieController);
 app.use(apiPath, UserController);
 app.use(apiPath, RoomController );
 app.use(apiPath, ReservationController);
-
-
 
 (async () => {
     await sequelize.sync();
