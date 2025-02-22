@@ -41,4 +41,4 @@ app.listen(port, () => {
     console.log(`Booking mngr listening at port ${port}`);
 });
 
-export { app };
+export default app;
