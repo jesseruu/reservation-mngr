@@ -7,6 +7,7 @@ import { UserController } from "./src/controllers/UserController";
 import { RoomController } from "./src/controllers/RoomController";
 import { ReservationController } from "./src/controllers/ReservationController";
 
+console.log(config);
 const app = express();
 const port = config.apiPort;
 const apiPath = config.apiPath;
