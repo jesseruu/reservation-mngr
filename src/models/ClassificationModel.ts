@@ -1,7 +1,7 @@
 import { AutoIncrement, Column, DataType, Model, Table } from 'sequelize-typescript';
 
 @Table({tableName: 'classifications'})
-export class UserModel extends Model {
+export class ClassificationModel extends Model {
     @Column({ field: 'id', type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
     public readonly id!: string;
 
