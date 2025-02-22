@@ -18,12 +18,12 @@ export class ReservedSeatModel extends Model {
         as: 'seats',
         targetKey: 'id'
     })
-    public seat!: SeatModel[];
+    public seat!: SeatModel;
 
     @BelongsTo(() => ReservationModel, {
         foreignKey: 'reservation_id',
         as: 'reservations',
         targetKey: 'id'
     })
-    public reservation!: SeatModel[];
+    public reservation!: SeatModel;
 }

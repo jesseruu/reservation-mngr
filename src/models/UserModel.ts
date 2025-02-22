@@ -9,7 +9,7 @@ export class UserModel extends Model {
     @Column({ field: 'name', type: DataType.STRING })
     public name!: string;
 
-    @Column({ field: 'email', type: DataType.STRING })
+    @Column({ field: 'email', type: DataType.STRING, unique: true })
     public email!: string;
 
     @Column({ field: 'created_at', type: DataType.DATE })

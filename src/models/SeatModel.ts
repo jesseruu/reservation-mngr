@@ -1,4 +1,5 @@
 import { BelongsTo, Column, DataType, HasOne, Model, Table } from 'sequelize-typescript';
+import { RoomModel } from './RoomModel';
 
 @Table({tableName: 'seats'})
 export class SeatModel extends Model {
@@ -16,4 +17,11 @@ export class SeatModel extends Model {
 
     @Column({ field: 'updated_at', type: DataType.DATE })
     public updatedAt!: Date;
+
+    @BelongsTo(() => RoomModel, {
+        as: 'room',
+        foreignKey: 'room_id',
+        targetKey: 'id',
+    })
+    public room!: RoomModel;
 }
