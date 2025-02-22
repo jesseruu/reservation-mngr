@@ -18,8 +18,4 @@ const sequelize = new Sequelize({
     username: config.dbUser,
 });
 
-sequelize.authenticate()
-    .then(() => console.log('Database connected...'))
-    .catch(err => console.error('Error connecting to the database:', err));
-
 export { sequelize };
