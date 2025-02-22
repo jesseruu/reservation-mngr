@@ -3,7 +3,7 @@ import { ReservationModel } from './ReservationModel';
 
 @Table({tableName: 'users'})
 export class UserModel extends Model {
-    @Column({ field: 'id', type: DataType.UUIDV4, primaryKey: true })
+    @Column({ field: 'id', type: DataType.UUID, primaryKey: true })
     public readonly id!: string;
 
     @Column({ field: 'name', type: DataType.STRING })
@@ -11,6 +11,9 @@ export class UserModel extends Model {
 
     @Column({ field: 'email', type: DataType.STRING, unique: true })
     public email!: string;
+
+    @Column({ field: 'password', type: DataType.TEXT })
+    public password!: string;
 
     @Column({ field: 'created_at', type: DataType.DATE })
     public createdAt!: Date;

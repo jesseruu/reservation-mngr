@@ -2,11 +2,14 @@ import express from "express";
 import { sequelize } from "./src/database/dbConn";
 import cors from "cors";
 import config from "./config";
+import { MovieController } from "./src/controllers/MovieController";
+import { UserController } from "./src/controllers/UserController";
+import { RoomController } from "./src/controllers/RoomController";
+import { ReservationController } from "./src/controllers/ReservationController";
 
 const app = express();
 const port = config.apiPort;
 const apiPath = config.apiPath;
-
 
 const corsOptions = {
     origin: '*',
@@ -18,13 +21,23 @@ app.use(express.json({ limit: '50mb' }));
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-app.get('/', (req, res) => {
+app.get(apiPath, (_req, res) => {
     res.send('Hello World!');
 });
 
-app.listen(port, async () => {
-    console.log(`Booking mngr listening at http://localhost:${port}`);
-    await sequelize.sync({ force: true });
+app.use(apiPath, MovieController);
+app.use(apiPath, UserController);
+app.use(apiPath, RoomController );
+app.use(apiPath, ReservationController);
+
+
+
+(async () => {
+    await sequelize.sync();
+});
+
+app.listen(port, () => {
+    console.log(`Booking mngr listening at port ${port}`);
 });
 
 export { app };

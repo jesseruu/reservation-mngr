@@ -1,6 +1,4 @@
 import { BelongsTo, Column, DataType, Model, Table } from 'sequelize-typescript';
-import { GenreModel } from './GenreModel';
-import { ClassificationModel } from './ClassificationModel';
 import { MovieModel } from './MovieModel';
 import { RoomModel } from './RoomModel';
 
@@ -13,18 +11,18 @@ export class ReservationModel extends Model {
     public startTime!: Date;
 
     @Column({ field: 'movie_id', type: DataType.INTEGER })
-    public movie_id!: number;
+    public movieId!: number;
 
-    @Column({ field: 'room_id', type: DataType.DATE })
-    public room_id!: number;
+    @Column({ field: 'room_id', type: DataType.INTEGER })
+    public roomId!: number;
 
-    @Column({ field: 'user_uuid', type: DataType.UUIDV4 })
+    @Column({ field: 'user_uuid', type: DataType.UUID })
     public userUuid!: string;
 
-    @Column({ field: 'created_at', type: DataType.DATE })
+    @Column({ field: 'created_at', type: DataType.DATE, defaultValue: DataType.NOW })
     public createdAt!: Date;
 
-    @Column({ field: 'updated_at', type: DataType.DATE })
+    @Column({ field: 'updated_at', type: DataType.DATE, defaultValue: null })
     public updatedAt!: Date;
 
     @BelongsTo(() => MovieModel, {

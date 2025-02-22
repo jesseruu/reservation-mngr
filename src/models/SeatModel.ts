@@ -17,11 +17,4 @@ export class SeatModel extends Model {
 
     @Column({ field: 'updated_at', type: DataType.DATE })
     public updatedAt!: Date;
-
-    @BelongsTo(() => RoomModel, {
-        as: 'room',
-        foreignKey: 'room_id',
-        targetKey: 'id',
-    })
-    public room!: RoomModel;
 }

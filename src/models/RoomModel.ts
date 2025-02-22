@@ -6,11 +6,11 @@ export class RoomModel extends Model {
     @Column({ field: 'id', type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
     public readonly id!: string;
 
-    @Column({ field: 'name', type: DataType.STRING })
+    @Column({ field: 'name', type: DataType.STRING, unique: true })
     public name!: string;
 
     @Column({ field: 'seat_numbers', type: DataType.INTEGER })
-    public seat_numbers!: number;
+    public seatNumbers!: number;
 
     @Column({ field: 'created_at', type: DataType.DATE })
     public createdAt!: Date;
@@ -19,7 +19,7 @@ export class RoomModel extends Model {
     public updatedAt!: Date;
 
     @HasMany(() => SeatModel, {
-        foreignKey: 'seat_id',
+        foreignKey: 'room_id',
         as: 'seats',
         sourceKey: 'id'
     })
