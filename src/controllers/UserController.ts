@@ -10,7 +10,6 @@ const UserController = Router();
 UserController.post('/auth/signin', async(req: Request, res: Response) => {
     const rquid = req.header('X-RqUID') as string;
     const body = req.body as User;
-    console.log(body);
     debug('<%s> Start to sign in', rquid);
     try {
         const { status, data } = await AuthService.signin(rquid, body);

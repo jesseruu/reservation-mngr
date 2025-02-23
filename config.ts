@@ -15,5 +15,8 @@ export default {
         defaultLimit: process.env.LIMIT || 10,
         defaultOffset: process.env.OFFSET || 0
     },
-
+    emailCredentials: {
+        accessKeyId: process.env.ACCESS_KEY || '',
+        secretAccessKey: process.env.SECRET_ACCESS_KEY || ''
+    }
 }
