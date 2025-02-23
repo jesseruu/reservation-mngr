@@ -109,7 +109,7 @@ export class ReservationService {
                 }
             });
             await SeatService.createSeats(rquid, seatsTranformation);
-            EmailService.sendEmail(userInfo.email, userInfo.name, seatsTranformation.length);
+            EmailService.sendEmail(userInfo.email, userInfo.name, seatsTranformation.length, body.startTime);
             debug('<%s> Reservation created', rquid);
             return { status: 200, data: reservationCreated }
         } catch (error) {

@@ -17,6 +17,7 @@ export default {
     },
     emailCredentials: {
         accessKeyId: process.env.ACCESS_KEY || '',
-        secretAccessKey: process.env.SECRET_ACCESS_KEY || ''
-    }
+        secretAccessKey: process.env.SECRET_ACCESS_KEY || '',
+        email: process.env.EMAIL || ''
+    },
 }

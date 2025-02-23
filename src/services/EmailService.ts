@@ -3,7 +3,7 @@ import * as aws from "@aws-sdk/client-ses";
 import config from "../../config";
 
 export class EmailService {
-    public static sendEmail(email: string, name: string, seats: number) {
+    public static sendEmail(email: string, name: string, seats: number, time: Date) {
         const ses = new aws.SES({
             apiVersion: "2010-12-01",
             region: "us-east-1",
@@ -18,14 +18,14 @@ export class EmailService {
 
         transporter.sendMail(
             {
-              from: "ijesser@outlook.com",
+              from: config.emailCredentials.email,
               to: email,
               subject: "Reservación realizada",
               html: `<h1>¡Hola ${name}!</h1>
-              <p>Tu reserva se ha realizado correctamente.
-              Con ${seats}numero  de asiestos !
+              <p>Tu reserva se ha realizado correctamente a la hora ${time}.
+              Con ${seats} numero de asiestos reservados!
 
-              Gracias por elegirnos</p>`
+              Gracias por elegirnos.</p>`
             },
             (error, info) => {
               if (error) {
