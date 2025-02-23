@@ -6,6 +6,7 @@ import { MovieController } from "./src/controllers/MovieController";
 import { UserController } from "./src/controllers/UserController";
 import { RoomController } from "./src/controllers/RoomController";
 import { ReservationController } from "./src/controllers/ReservationController";
+import morgan from "morgan";
 
 const app = express();
 const port = config.apiPort;
@@ -18,8 +19,12 @@ const corsOptions = {
 }
 
 app.use(express.json({ limit: '50mb' }));
-app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+app.use(cors(corsOptions));
+app.use(morgan('combined', {
+    skip: (_req, res) =>
+        res.statusCode < 400
+}));
 
 app.get(apiPath, (_req, res) => {
     res.send('Hello World!');
