@@ -3,7 +3,7 @@ import * as aws from "@aws-sdk/client-ses";
 import config from "../../config";
 
 export class EmailService {
-    public static async sendEmail(email: string, name: string, seats: number) {
+    public static sendEmail(email: string, name: string, seats: number) {
         const ses = new aws.SES({
             apiVersion: "2010-12-01",
             region: "us-east-1",
